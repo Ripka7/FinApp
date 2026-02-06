@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>FinApple</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -31,6 +31,13 @@
         input, select, textarea {
             font-size: 16px !important; /* Prevent iOS zoom on focus */
         }
+        /* Apple-like button transitions */
+        button {
+            transition: transform 0.1s ease-out;
+        }
+        button:active {
+            transform: scale(0.96);
+        }
     </style>
 <script type="importmap">
 {
@@ -44,10 +51,8 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
 <body class="bg-gray-50 dark:bg-[#1C1C1E] text-gray-900 dark:text-white transition-colors duration-200">
     <div id="root"></div>
-<script type="module" src="/index.tsx"></script>
 </body>
 </html>
