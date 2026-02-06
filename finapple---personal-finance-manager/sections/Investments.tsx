@@ -107,7 +107,7 @@ const InvestmentsSection: React.FC<InvestmentsSectionProps> = ({
       </div>
 
       <div className="bg-white dark:bg-gray-800 p-8 rounded-[2.5rem] shadow-sm border border-gray-100 dark:border-gray-700">
-        <h2 className="font-black text-sm uppercase tracking-widest mb-6 opacity-40">{t.portfolio}</h2>
+        <h2 className="font-black text-[10px] uppercase tracking-widest mb-6 opacity-40">{t.portfolio}</h2>
         <div className="h-64 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
@@ -142,7 +142,8 @@ const InvestmentsSection: React.FC<InvestmentsSectionProps> = ({
             </div>
             <div className="flex items-center space-x-3 ml-4 flex-shrink-0">
               <div className="text-right">
-                <p className="text-base font-black whitespace-nowrap">
+                {/* Reduced text size for amount to fit 8 chars as requested */}
+                <p className="text-sm font-black whitespace-nowrap">
                   {inv.amount.toLocaleString()} {inv.currency}
                 </p>
               </div>
