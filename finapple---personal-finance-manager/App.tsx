@@ -1,8 +1,8 @@
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
-  Currency, Wallet, Budget, Envelope, Investment, Transaction, 
-  AppSettings, Language, Theme, TransactionType, Frequency 
+  Wallet, Budget, Envelope, Investment, Transaction, 
+  AppSettings, TransactionType, Frequency 
 } from './types';
 import { translations } from './translations';
 import { ACCENT_COLORS } from './constants';
@@ -92,16 +92,16 @@ const App: React.FC = () => {
     },
     {
       id: 'inv3',
-      type: 'Deposits',
-      name: 'PrivatBank Savings',
+      type: 'USD ($)',
+      name: 'Dollar Cache',
       amount: 1000,
-      currency: '€',
+      currency: '$',
       purchaseDate: '2024-02-01',
-      termDate: '2025-02-01',
-      interestRate: 3.5,
-      payoutFrequency: 'annual',
-      interestType: 'compound',
-      comment: 'Emergency fund'
+      termDate: 'perpetual',
+      interestRate: 0,
+      payoutFrequency: 'end-of-term',
+      interestType: 'simple',
+      comment: 'Emergency reserve'
     }
   ]);
 
@@ -262,6 +262,7 @@ const App: React.FC = () => {
         )}
       </main>
 
+      {/* Nav fixed to bottom edge as per design requirements */}
       <nav className="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-t border-gray-200/50 dark:border-gray-800/50 z-50 pb-safe shadow-2xl">
         <div className="max-w-md mx-auto h-20 flex items-center justify-around px-2">
           {mainNavItems.map(item => (
