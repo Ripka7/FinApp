@@ -30,8 +30,8 @@ const HomeSection: React.FC<HomeSectionProps> = ({
   }, [wallets, transactions]);
 
   const totalBalanceUAH = wallets.reduce((acc, curr) => {
-    if (curr.currency === '$') return acc + curr.balance * 41;
-    if (curr.currency === '€') return acc + curr.balance * 44;
+    if (curr.currency === '$') return acc + curr.balance * 44;
+    if (curr.currency === '€') return acc + curr.balance * 50;
     return acc + curr.balance;
   }, 0);
 
