@@ -51,6 +51,7 @@ const BudgetsSection: React.FC<BudgetsSectionProps> = ({ t, budgets, setBudgets,
       <div className="space-y-4">
         {budgets.map((budget) => {
           const remaining = Math.max(0, budget.limit - budget.spent);
+          // Show remaining amount in color, not spent.
           const percentageRemaining = Math.max(0, Math.min(100, (remaining / budget.limit) * 100));
           return (
             <div 

@@ -1,7 +1,6 @@
+
 {
   "name": "FinApple - Personal Finance Manager",
-  "description": "A sophisticated personal finance application designed with Apple-inspired aesthetics, featuring multi-currency wallets, budgets with progress tracking, savings envelopes, and a comprehensive investment portfolio manager with yield calculations.",
-  "requestFramePermissions": [
-    "camera"
-  ]
+  "description": "A sophisticated, 100% autonomous personal finance application designed with Apple-inspired aesthetics, featuring multi-currency wallets, budgets with progress tracking, and local financial heuristics.",
+  "requestFramePermissions": []
 }

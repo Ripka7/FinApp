@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Wallet, AppSettings, TransactionType, Transaction } from '../types';
-import { getFinancialAdvice } from '../services/geminiService';
+import { getLocalFinancialTip } from '../services/geminiService';
 import { 
   PlusIcon, MinusIcon, ArrowsRightLeftIcon, 
   SparklesIcon, PencilIcon, PresentationChartLineIcon,
@@ -22,17 +22,12 @@ const HomeSection: React.FC<HomeSectionProps> = ({
   t, wallets, settings, transactions, onAddClick, onEditTransaction, setActiveTab 
 }) => {
   const [advice, setAdvice] = useState<string>("");
-  const [isLoadingAdvice, setIsLoadingAdvice] = useState(false);
 
   useEffect(() => {
-    const fetchAdvice = async () => {
-      setIsLoadingAdvice(true);
-      const res = await getFinancialAdvice("Give a specific 20-word financial tip about savings or investments for an app dashboard.");
-      setAdvice(res);
-      setIsLoadingAdvice(false);
-    };
-    fetchAdvice();
-  }, []);
+    // Autonomous local logic replaces third-party API
+    const tip = getLocalFinancialTip(wallets, transactions);
+    setAdvice(tip);
+  }, [wallets, transactions]);
 
   const totalBalanceUAH = wallets.reduce((acc, curr) => {
     if (curr.currency === '$') return acc + curr.balance * 41;
@@ -80,14 +75,14 @@ const HomeSection: React.FC<HomeSectionProps> = ({
         ))}
       </div>
 
-      {/* Dynamic Advice */}
+      {/* Autonomous Insight Engine */}
       <div className="relative overflow-hidden p-6 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-[2.5rem] border border-gray-100 dark:border-gray-800 shadow-sm">
         <div className="flex items-center space-x-2 mb-3">
           <SparklesIcon className="w-5 h-5" style={{ color: settings.accentColor }} />
-          <h2 className="font-black text-sm uppercase tracking-wider">{t.tips}</h2>
+          <h2 className="font-black text-sm uppercase tracking-wider">Local Insight</h2>
         </div>
         <p className="text-sm font-medium text-gray-600 dark:text-gray-400 leading-relaxed italic">
-          {isLoadingAdvice ? <span className="animate-pulse">Analyzing markets...</span> : `"${advice}"`}
+          "{advice}"
         </p>
       </div>
 
